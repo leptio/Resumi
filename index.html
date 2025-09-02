@@ -46,17 +46,11 @@
        
 
         <!-- Education -->
-        <h3 class="text-xl font-semibold mt-4">Education</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" id="inputEdu1Degree" placeholder="Degree 1 (e.g. B.Sc. in CS)" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-          <input type="text" id="inputEdu1School" placeholder="School 1" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-        </div>
-        <input type="text" id="inputEdu1Years" placeholder="Years (e.g. 2014-2018)" class="w-full px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-          <input type="text" id="inputEdu2Degree" placeholder="Degree 2" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-          <input type="text" id="inputEdu2School" placeholder="School 2" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-        </div>
-        <input type="text" id="inputEdu2Years" placeholder="Years (e.g. 2010-2014)" class="w-full px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
+        <h3 class="text-xl font-semibold mt-4">Experience</h3>
+        <button type="button" id="addSchoolBtn" class="w-full py-2 rounded-md bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium hover:opacity-90 transform hover:scale-105 transition duration-300">
+          + Add School
+        </button>
+        <div id="schools-container" class="space-y-4 mt-4"></div>
         <!-- Skills -->
         <h3 class="text-xl font-semibold mt-4">Skills</h3>
         <input type="text" id="inputSkills" placeholder="List skills separated by commas"
@@ -89,23 +83,11 @@
 
 
       <!-- Education Timeline -->
-      <div>
-        <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Education</h2>
-        <!-- Edu 1 -->
-        <div class="relative border-l-4 border-purple-500 dark:border-purple-400 pl-6 mb-6">
-          <div class="absolute -left-2 top-2 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full"></div>
-          <h4 id="previewEdu1Degree" class="font-semibold text-lg"></h4>
-          <p id="previewEdu1School" class="text-gray-500 dark:text-gray-400 text-sm mb-2"></p>
-          <p id="previewEdu1Years" class="text-gray-500 dark:text-gray-400 text-sm"></p>
-        </div>
-        <!-- Edu 2 -->
-        <div class="relative border-l-4 border-purple-500 dark:border-purple-400 pl-6 mb-6">
-          <div class="absolute -left-2 top-2 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full"></div>
-          <h4 id="previewEdu2Degree" class="font-semibold text-lg"></h4>
-          <p id="previewEdu2School" class="text-gray-500 dark:text-gray-400 text-sm mb-2"></p>
-          <p id="previewEdu2Years" class="text-gray-500 dark:text-gray-400 text-sm"></p>
-        </div>
-      </div>
+     <div id="schoolPreview">
+        <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">
+            Education
+        </h2>
+     </div>
       <!-- Skills Tags -->
       <div>
         <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Skills</h2>

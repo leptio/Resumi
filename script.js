@@ -66,7 +66,7 @@ form.addEventListener("submit", (e) => {
       const jobEl = document.createElement("div");
       jobEl.className = "relative border-l-4 border-cyan-500 dark:border-cyan-400 pl-6 mb-6";
       jobEl.innerHTML = `
-        <div class="absolute -left-2 top-2 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full"></div>
+        <div class="absolute -left-[10px] top-0 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full transform -translate-y-1/4"></div>
         <h4 class="font-semibold text-lg">${title}</h4>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${company} ${years}</p>
         <p class="text-gray-700 dark:text-gray-300">${desc}</p>
@@ -75,20 +75,34 @@ form.addEventListener("submit", (e) => {
     }
   });
 
-  // Education
-  document.getElementById("previewEdu1Degree").textContent =
-    document.getElementById("inputEdu1Degree").value;
-  document.getElementById("previewEdu1School").textContent =
-    document.getElementById("inputEdu1School").value;
-  document.getElementById("previewEdu1Years").textContent =
-    document.getElementById("inputEdu1Years").value;
+  // Clear old preview universities and populate dynamic universities
+  const schoolSection = document.getElementById("schoolPreview");
+  schoolSection.innerHTML = `
+    <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">
+      Experience
+    </h2>
+  `;
 
-  document.getElementById("previewEdu2Degree").textContent =
-    document.getElementById("inputEdu2Degree").value;
-  document.getElementById("previewEdu2School").textContent =
-    document.getElementById("inputEdu2School").value;
-  document.getElementById("previewEdu2Years").textContent =
-    document.getElementById("inputEdu2Years").value;
+  document.querySelectorAll(".school-block").forEach(block => {
+    const degreeInput = block.querySelector('input[placeholder="Degree (e.g. B.Sc. in CS)"]');
+    const schoolInput = block.querySelector('input[placeholder="School"]');
+    const schoolYearsInput = block.querySelector('input[placeholder="Years"]');
+
+    const degree = degreeInput ? degreeInput.value.trim() : "";
+    const school = schoolInput ? schoolInput.value.trim() : "";
+    const schoolYears = schoolYearsInput ? schoolYearsInput.value.trim() : "";
+
+    if (degree || school || schoolYears) {
+      const schoolEl = document.createElement("div");
+      schoolEl.className = "relative border-l-4 border-purple-500 dark:border-purple-400 pl-6 mb-6";
+      schoolEl.innerHTML = `
+        <div class="absolute -left-[10px] top-0 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full transform -translate-y-1/4"></div>
+        <h4 class="font-semibold text-lg">${degree}</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${school} ${schoolYears}</p>
+      `;
+      schoolSection.appendChild(schoolEl);
+    }
+  });
 
   // Skills
   const skillsContainer = document.getElementById("skillsPreview");
@@ -152,6 +166,42 @@ addJobBtn.addEventListener("click", () => {
 jobCount++;
 createJobBlock(jobCount);
 
+const schoolsContainer = document.getElementById("schools-container");
+const addSchoolBtn = document.getElementById("addSchoolBtn");
+let schoolCount = 0;
+const maxSchools = 10;
+
+function createSchoolBlock(index) {
+  const schoolDiv = document.createElement("div");
+  schoolDiv.className = "school-block border border-gray-300 dark:border-gray-600 rounded-md p-4 relative space-y-2";
+  schoolDiv.innerHTML = `
+    <button type="button" class="absolute top-2 right-2 text-red-500 font-bold hover:text-red-700">✕</button>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" placeholder="Degree (e.g. B.Sc. in CS)" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" placeholder="School" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2">
+      <input type="text" placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+  `;
+
+  const delBtn = schoolDiv.querySelector("button");
+  delBtn.addEventListener("click", () => {
+    schoolDiv.remove();
+    schoolCount--;
+  });
+
+  schoolsContainer.appendChild(schoolDiv);
+}
+
+addSchoolBtn.addEventListener("click", () => {
+  if (schoolCount >= maxSchools) return;
+  schoolCount++;
+  createSchoolBlock(schoolCount);
+});
+
+// initialize with one school
+schoolCount++;
+createSchoolBlock(schoolCount);
 
 const experienceSection = document.querySelector("#resume-preview > div:nth-of-type(3)");
 experienceSection.innerHTML = `
