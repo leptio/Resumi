@@ -1,4 +1,6 @@
 // Theme Toggle (Dark/Light) with persistence
+console.log("initiated");
+
 const themeToggle = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
 const storedTheme = localStorage.getItem('theme');
@@ -208,58 +210,49 @@ experienceSection.innerHTML = `
   <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Experience</h2>
 `;
 
-for (let i = 1; i <= jobCount; i++) {
-  const title = document.getElementById(`inputJob${i}Title`).value;
-  const company = document.getElementById(`inputJob${i}Company`).value;
-  const years = document.getElementById(`inputJob${i}Years`).value;
-  const desc = document.getElementById(`inputJob${i}Desc`).value;
 
-  if (!title && !company && !desc) continue;
+console.log("content loaded");
+const pdfBtn = document.getElementById("downloadPDF");
+const pngBtn = document.getElementById("downloadPNG");
+const resume = document.getElementById("resume-preview");
 
-  const jobHTML = `
-    <div class="relative border-l-4 border-cyan-500 dark:border-cyan-400 pl-6 mb-6">
-      <div class="absolute -left-2 top-2 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full"></div>
-      <h4 class="font-semibold text-lg">${title}</h4>
-      <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${company} — ${years}</p>
-      <p class="text-gray-700 dark:text-gray-300">${desc}</p>
-    </div>
-  `;
-  experienceSection.innerHTML += jobHTML;
+function prepareResumeForExport() {
+  resume.style.opacity = "1";
+  resume.style.pointerEvents = "auto";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const pdfBtn = document.getElementById("downloadPDF");
-  const pngBtn = document.getElementById("downloadPNG");
-  const resume = document.getElementById("resume-preview");
+const { jsPDF } = window.jspdf;
 
-  function prepareResumeForExport() {
-    resume.style.opacity = "1";
-    resume.style.pointerEvents = "auto";
-  }
-
-  pdfBtn.addEventListener("click", () => {
-    console.log("pdfbuttonclick");
-    prepareResumeForExport();
-    html2pdf()
-      .set({
-        margin: 0.5,
-        filename: 'resume.pdf',
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-      })
-      .from(resume)
-      .save();
+pdfBtn.addEventListener("click", () => {
+  console.log("pdfbuttonclick");
+  prepareResumeForExport();
+  html2canvas(resume, { scale: 2 }).then(canvas => {
+  const imgData = canvas.toDataURL("image/png");
+  const pdf = new jsPDF({
+    orientation: "portrait",
+    unit: "px",
+    format: [canvas.width, canvas.height],
   });
 
-  pngBtn.addEventListener("click", () => {
-    console.log("pngbuttonclick");
-    prepareResumeForExport();
-    html2canvas(resume, { scale: 2 }).then(canvas => {
-      const link = document.createElement("a");
-      link.download = "resume.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
+  pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+  pdf.save("resume.pdf");
+});
+});
+
+const element = document.getElementById("resume-preview");
+
+
+
+
+pngBtn.addEventListener("click", () => {
+  console.log("pngbuttonclick");
+  prepareResumeForExport();
+  html2canvas(resume, { scale: 2 }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "resume.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
   });
 });
+
 
