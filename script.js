@@ -79,7 +79,7 @@ form.addEventListener("submit", (e) => {
   const schoolSection = document.getElementById("schoolPreview");
   schoolSection.innerHTML = `
     <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">
-      Experience
+      Education
     </h2>
   `;
 
