@@ -36,6 +36,8 @@
         </div>
         <textarea id="inputSummary" rows="3" placeholder="Summary / Objective"
                   class="w-full px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"></textarea>
+        <textarea id="inputEmail" rows="1" placeholder="Email Address"
+                  class="w-full px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"></textarea>
        <!-- Experience (Input Section) -->
         <h3 class="text-xl font-semibold mt-4">Experience</h3>
         <button type="button" id="addJobBtn" class="w-full py-2 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:opacity-90 transform hover:scale-105 transition duration-300">
@@ -47,7 +49,7 @@
        
 
         <!-- Education -->
-        <h3 class="text-xl font-semibold mt-4">Experience</h3>
+        <h3 class="text-xl font-semibold mt-4">Education</h3>
         <button type="button" id="addSchoolBtn" class="w-full py-2 rounded-md bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium hover:opacity-90 transform hover:scale-105 transition duration-300">
           + Add School
         </button>
@@ -70,11 +72,19 @@
         <h1 id="previewName" class="text-4xl font-bold"></h1>
         <p id="previewTitle" class="text-xl text-gray-600 dark:text-gray-300 mt-1"></p>
       </div>
+      <!-- Email -->
+      <div class="text-center">
+        <h1 id="previewEmail" class="text-gray-600 dark:text-gray-200 mt-1"></h1>
+      </div>
       <!-- Summary -->
       <div>
         <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Summary</h2>
         <p id="previewSummary" class="text-gray-700 dark:text-gray-200"></p>
       </div>
+
+      
+
+
      <!-- Experience Timeline -->
      <div id="experiencePreview">
         <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">
