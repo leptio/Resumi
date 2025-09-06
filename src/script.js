@@ -44,11 +44,12 @@ form.addEventListener("submit", (e) => {
     document.getElementById("inputTitle").value;
   document.getElementById("previewSummary").textContent =
     document.getElementById("inputSummary").value;
-  console.log(document.getElementById("inputEmail"));
-  console.log(document.getElementById("previewEmail"));
   document.getElementById("previewEmail").textContent =
     document.getElementById("inputEmail").value;
-
+  document.getElementById("previewAddressOne").textContent =
+    document.getElementById("inputAddressOne").value;
+  document.getElementById("previewAddressTwo").textContent =
+    document.getElementById("inputAddressTwo").value;
   // Clear old preview jobs and populate dynamic jobs
   const expSection = document.getElementById("experiencePreview");
   expSection.innerHTML = `
@@ -209,7 +210,7 @@ addSchoolBtn.addEventListener("click", () => {
 schoolCount++;
 createSchoolBlock(schoolCount);
 
-const experienceSection = document.querySelector("#resume-preview > div:nth-of-type(4)");
+const experienceSection = document.querySelector("#resume-preview > div:nth-of-type(6)");
 experienceSection.innerHTML = `
   <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Experience</h2>
 `;
