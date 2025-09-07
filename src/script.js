@@ -229,19 +229,28 @@ function prepareResumeForExport() {
 const { jsPDF } = window.jspdf;
 
 pdfBtn.addEventListener("click", () => {
+  const originalWidth = resume.style.width;
+  resume.style.width = (resume.offsetWidth * 1.8) + "px";
   console.log("pdfbuttonclick");
   prepareResumeForExport();
-  html2canvas(resume, { scale: 2 }).then(canvas => {
-  const imgData = canvas.toDataURL("image/png");
+  const rect = resume.getBoundingClientRect();
+  const resumeWidth = rect.width;
+  const resumeHeight = rect.height;
   const pdf = new jsPDF({
     orientation: "portrait",
     unit: "px",
-    format: [canvas.width, canvas.height],
+    format: "a2"
   });
 
-  pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-  pdf.save("resume.pdf");
-});
+  pdf.html(resume, {
+    callback: function (doc) {
+      doc.save("resume.pdf");
+      resume.style.width = originalWidth;
+    },
+    x: 10,
+    y: 10,
+    html2canvas: { scale: 1 } // optional, but does not rasterize text
+  });
 });
 
 const element = document.getElementById("resume-preview");
