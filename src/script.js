@@ -155,12 +155,12 @@ function createJobBlock(index) {
   jobDiv.innerHTML = `
     <button type="button" class="absolute top-2 right-2 text-red-500 font-bold hover:text-red-700">✕</button>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="text" placeholder="Job Title" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
-      <input type="text" placeholder="Company" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Job Title" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Company" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-      <input type="text" placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
-      <textarea placeholder="Description" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600"></textarea>
+      <input type="text" required placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <textarea required placeholder="Description" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600"></textarea>
     </div>
   `;
 
@@ -194,11 +194,11 @@ function createSchoolBlock(index) {
   schoolDiv.innerHTML = `
     <button type="button" class="absolute top-2 right-2 text-red-500 font-bold hover:text-red-700">✕</button>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="text" placeholder="Degree (e.g. B.Sc. in CS)" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
-      <input type="text" placeholder="School" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Degree (e.g. B.Sc. in CS)" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="School" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2">
-      <input type="text" placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
   `;
 
   const delBtn = schoolDiv.querySelector("button");
