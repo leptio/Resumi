@@ -71,7 +71,7 @@ form.addEventListener("submit", (e) => {
     const descInput = block.querySelector('textarea');
 
     const title = titleInput ? titleInput.value.trim() : "";
-    const company = companyInput ? companyInput.value.trim() : "";
+    const company = companyInput ? companyInput.value.trim()+"," : "";
     const years = yearsInput ? yearsInput.value.trim() : "";
     const desc = descInput ? descInput.value.trim() : "";
 
@@ -107,7 +107,7 @@ form.addEventListener("submit", (e) => {
     const schoolYearsInput = block.querySelector('input[placeholder="Years"]');
 
     const degree = degreeInput ? degreeInput.value.trim() : "";
-    const school = schoolInput ? schoolInput.value.trim() : "";
+    const school = schoolInput ? schoolInput.value.trim()+"," : "";
     const schoolYears = schoolYearsInput ? schoolYearsInput.value.trim() : "";
 
     if (degree || school || schoolYears) {
