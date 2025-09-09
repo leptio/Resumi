@@ -57,7 +57,13 @@ form.addEventListener("submit", (e) => {
       Experience
     </h2>
   `;
-
+  const leftBorderCircleExp = document.createElement("div");
+  leftBorderCircleExp.innerHTML = `<div class="absolute -left-[6px] translate-y-12.5 top-0 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full transform -translate-y-1/4"></div>`;
+  expSection.appendChild(leftBorderCircleExp);
+  const leftBorderLineExp = document.createElement("div");
+  leftBorderLineExp.innerHTML = `<div class="absolute left-0 top-0 w-1 h-[calc(100%-55px)] translate-y-12.5 bg-cyan-500 dark:bg-cyan-400"></div>`;
+  expSection.appendChild(leftBorderLineExp);
+  expSection.classList.add("relative")
   document.querySelectorAll(".job-block").forEach(block => {
     const titleInput = block.querySelector('input[placeholder="Job Title"]');
     const companyInput = block.querySelector('input[placeholder="Company"]');
@@ -73,7 +79,6 @@ form.addEventListener("submit", (e) => {
       const jobEl = document.createElement("div");
       jobEl.className = "relative border-l-4 border-cyan-500 dark:border-cyan-400 pl-6 mb-6";
       jobEl.innerHTML = `
-        <div class="absolute -left-[10px] top-0 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full transform -translate-y-1/4"></div>
         <h4 class="font-semibold text-lg">${title}</h4>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${company} ${years}</p>
         <p class="text-gray-700 dark:text-gray-300">${desc}</p>
@@ -89,7 +94,13 @@ form.addEventListener("submit", (e) => {
       Education
     </h2>
   `;
-
+  const leftBorderCircleEdu = document.createElement("div");
+  leftBorderCircleEdu.innerHTML = `<div class="absolute -left-[6px] translate-y-12.5 top-0 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full transform -translate-y-1/4"></div>`;
+  schoolSection.appendChild(leftBorderCircleEdu);
+  const leftBorderLineEdu = document.createElement("div");
+  leftBorderLineEdu.innerHTML = `<div class="absolute left-0 top-0 w-1 h-[calc(100%-55px)] translate-y-12.5 bg-purple-500 dark:bg-purple-400"></div>`;
+  schoolSection.appendChild(leftBorderLineEdu);
+  schoolSection.classList.add("relative")
   document.querySelectorAll(".school-block").forEach(block => {
     const degreeInput = block.querySelector('input[placeholder="Degree (e.g. B.Sc. in CS)"]');
     const schoolInput = block.querySelector('input[placeholder="School"]');
@@ -103,7 +114,6 @@ form.addEventListener("submit", (e) => {
       const schoolEl = document.createElement("div");
       schoolEl.className = "relative border-l-4 border-purple-500 dark:border-purple-400 pl-6 mb-6";
       schoolEl.innerHTML = `
-        <div class="absolute -left-[10px] top-0 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full transform -translate-y-1/4"></div>
         <h4 class="font-semibold text-lg">${degree}</h4>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${school} ${schoolYears}</p>
       `;
