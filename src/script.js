@@ -57,7 +57,13 @@ form.addEventListener("submit", (e) => {
       Experience
     </h2>
   `;
-
+  const leftBorderCircleExp = document.createElement("div");
+  leftBorderCircleExp.innerHTML = `<div class="absolute -left-[6px] translate-y-12.5 top-0 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full transform -translate-y-1/4"></div>`;
+  expSection.appendChild(leftBorderCircleExp);
+  const leftBorderLineExp = document.createElement("div");
+  leftBorderLineExp.innerHTML = `<div class="absolute left-0 top-0 w-1 h-[calc(100%-55px)] translate-y-12.5 bg-cyan-500 dark:bg-cyan-400"></div>`;
+  expSection.appendChild(leftBorderLineExp);
+  expSection.classList.add("relative")
   document.querySelectorAll(".job-block").forEach(block => {
     const titleInput = block.querySelector('input[placeholder="Job Title"]');
     const companyInput = block.querySelector('input[placeholder="Company"]');
@@ -65,7 +71,7 @@ form.addEventListener("submit", (e) => {
     const descInput = block.querySelector('textarea');
 
     const title = titleInput ? titleInput.value.trim() : "";
-    const company = companyInput ? companyInput.value.trim() : "";
+    const company = companyInput ? companyInput.value.trim()+"," : "";
     const years = yearsInput ? yearsInput.value.trim() : "";
     const desc = descInput ? descInput.value.trim() : "";
 
@@ -73,7 +79,6 @@ form.addEventListener("submit", (e) => {
       const jobEl = document.createElement("div");
       jobEl.className = "relative border-l-4 border-cyan-500 dark:border-cyan-400 pl-6 mb-6";
       jobEl.innerHTML = `
-        <div class="absolute -left-[10px] top-0 w-4 h-4 bg-cyan-500 dark:bg-cyan-400 rounded-full transform -translate-y-1/4"></div>
         <h4 class="font-semibold text-lg">${title}</h4>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${company} ${years}</p>
         <p class="text-gray-700 dark:text-gray-300">${desc}</p>
@@ -89,21 +94,26 @@ form.addEventListener("submit", (e) => {
       Education
     </h2>
   `;
-
+  const leftBorderCircleEdu = document.createElement("div");
+  leftBorderCircleEdu.innerHTML = `<div class="absolute -left-[6px] translate-y-12.5 top-0 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full transform -translate-y-1/4"></div>`;
+  schoolSection.appendChild(leftBorderCircleEdu);
+  const leftBorderLineEdu = document.createElement("div");
+  leftBorderLineEdu.innerHTML = `<div class="absolute left-0 top-0 w-1 h-[calc(100%-55px)] translate-y-12.5 bg-purple-500 dark:bg-purple-400"></div>`;
+  schoolSection.appendChild(leftBorderLineEdu);
+  schoolSection.classList.add("relative")
   document.querySelectorAll(".school-block").forEach(block => {
     const degreeInput = block.querySelector('input[placeholder="Degree (e.g. B.Sc. in CS)"]');
     const schoolInput = block.querySelector('input[placeholder="School"]');
     const schoolYearsInput = block.querySelector('input[placeholder="Years"]');
 
     const degree = degreeInput ? degreeInput.value.trim() : "";
-    const school = schoolInput ? schoolInput.value.trim() : "";
+    const school = schoolInput ? schoolInput.value.trim()+"," : "";
     const schoolYears = schoolYearsInput ? schoolYearsInput.value.trim() : "";
 
     if (degree || school || schoolYears) {
       const schoolEl = document.createElement("div");
       schoolEl.className = "relative border-l-4 border-purple-500 dark:border-purple-400 pl-6 mb-6";
       schoolEl.innerHTML = `
-        <div class="absolute -left-[10px] top-0 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full transform -translate-y-1/4"></div>
         <h4 class="font-semibold text-lg">${degree}</h4>
         <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">${school} ${schoolYears}</p>
       `;
@@ -145,12 +155,12 @@ function createJobBlock(index) {
   jobDiv.innerHTML = `
     <button type="button" class="absolute top-2 right-2 text-red-500 font-bold hover:text-red-700">✕</button>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="text" placeholder="Job Title" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
-      <input type="text" placeholder="Company" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Job Title" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Company" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-      <input type="text" placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
-      <textarea placeholder="Description" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600"></textarea>
+      <input type="text" required placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <textarea required placeholder="Description" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600"></textarea>
     </div>
   `;
 
@@ -184,11 +194,11 @@ function createSchoolBlock(index) {
   schoolDiv.innerHTML = `
     <button type="button" class="absolute top-2 right-2 text-red-500 font-bold hover:text-red-700">✕</button>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="text" placeholder="Degree (e.g. B.Sc. in CS)" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
-      <input type="text" placeholder="School" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Degree (e.g. B.Sc. in CS)" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="School" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2">
-      <input type="text" placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
+      <input type="text" required placeholder="Years" class="px-3 py-2 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-600" />
   `;
 
   const delBtn = schoolDiv.querySelector("button");
