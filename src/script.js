@@ -236,8 +236,10 @@ function prepareResumeForExport() {
   resume.style.pointerEvents = "auto";
 }
 
+const fontForm = document.getElementById("fontSelect");
 const { jsPDF } = window.jspdf;
 import { robotoTTF } from "./fonts/roboto.js"
+import { latoTTF } from "./fonts/lato.js"
 
 pdfBtn.addEventListener("click", () => {
   const originalWidth = resume.style.width;
@@ -254,9 +256,19 @@ pdfBtn.addEventListener("click", () => {
     unit: "px",
     format: "a2"
   });
-  pdf.addFileToVFS("Roboto.ttf", robotoTTF);
-  pdf.addFont("Roboto.ttf", "Roboto", "normal");
-  pdf.setFont("Roboto");
+  console.log("form started")
+  if (fontForm.value == "Roboto") {
+    console.log("roboto detected")
+    pdf.addFileToVFS("Roboto.ttf", robotoTTF);
+    pdf.addFont("Roboto.ttf", "Roboto", "normal");
+    pdf.setFont("Roboto");
+  } else if (fontForm.value == "Lato") {
+    console.log("lato detected")
+    pdf.addFileToVFS("Lato.ttf", latoTTF);
+    pdf.addFont("Lato.ttf", "Lato", "normal");
+    pdf.setFont("Lato");
+  }
+  console.log("form continued")
   pdfBtn.style.display = "none";
   pngBtn.style.display = "none";
   pdf.html(resume, {
