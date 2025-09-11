@@ -237,6 +237,15 @@ function prepareResumeForExport() {
 }
 
 const fontForm = document.getElementById("fontSelect");
+
+fontForm.addEventListener("change", () => {
+  const selectedFont = fontSelect.value;
+  preview.style.fontFamily = selectedFont;
+  preview.querySelectorAll("*").forEach(el => {
+    el.style.fontFamily = selectedFont;
+  });
+});
+
 const { jsPDF } = window.jspdf;
 import { robotoTTF } from "./fonts/roboto.js"
 import { latoTTF } from "./fonts/lato.js"
@@ -267,7 +276,11 @@ pdfBtn.addEventListener("click", () => {
     pdf.addFileToVFS("Lato.ttf", latoTTF);
     pdf.addFont("Lato.ttf", "Lato", "normal");
     pdf.setFont("Lato");
+  } else if (fontForm.value == "Times New Roman") {
+    console.log("tnr detected")
+    pdf.setFont("times");
   }
+  console.log('after addFont getFontList', pdf.getFontList());
   console.log("form continued")
   pdfBtn.style.display = "none";
   pngBtn.style.display = "none";
