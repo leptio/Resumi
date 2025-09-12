@@ -228,7 +228,7 @@ experienceSection.innerHTML = `
 
 console.log("content loaded");
 const pdfBtn = document.getElementById("downloadPDF");
-const pngBtn = document.getElementById("downloadPNG");
+//const pngBtn = document.getElementById("downloadPNG");
 const resume = document.getElementById("resume-preview");
 
 function prepareResumeForExport() {
@@ -253,7 +253,7 @@ import { latoTTF } from "./fonts/lato.js"
 pdfBtn.addEventListener("click", () => {
   const originalWidth = resume.style.width;
   const originalPdfBtnStyle = pdfBtn.style.display;
-  const originalPngBtnStyle = pngBtn.style.display;
+  //const originalPngBtnStyle = pngBtn.style.display;
   resume.style.width = (resume.offsetWidth * 1.8) + "px";
   console.log("pdfbuttonclick");
   prepareResumeForExport();
@@ -283,13 +283,13 @@ pdfBtn.addEventListener("click", () => {
   console.log('after addFont getFontList', pdf.getFontList());
   console.log("form continued")
   pdfBtn.style.display = "none";
-  pngBtn.style.display = "none";
+  //pngBtn.style.display = "none";
   pdf.html(resume, {
     callback: function (doc) {
       doc.save("resume.pdf");
       resume.style.width = originalWidth;
       pdfBtn.style.display = originalPdfBtnStyle;
-      pngBtn.style.display = originalPngBtnStyle;
+      //pngBtn.style.display = originalPngBtnStyle;
     },
     x: 10,
     y: 10,
@@ -302,7 +302,7 @@ const element = document.getElementById("resume-preview");
 
 
 
-pngBtn.addEventListener("click", () => {
+/*pngBtn.addEventListener("click", () => {
   console.log("pngbuttonclick");
   prepareResumeForExport();
   html2canvas(resume, { scale: 2 }).then(canvas => {
@@ -311,6 +311,6 @@ pngBtn.addEventListener("click", () => {
     link.href = canvas.toDataURL("image/png");
     link.click();
   });
-});
+});*/
 
 
