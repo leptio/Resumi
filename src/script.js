@@ -4,6 +4,7 @@ console.log("initiated");
 const themeToggle = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
 const storedTheme = localStorage.getItem('theme');
+const docLive = false;
 if (storedTheme) {
   htmlEl.classList.add(storedTheme);
 }
@@ -232,14 +233,18 @@ function generateClassicStyle(e) {
 function generateDocument(e) {
   e.preventDefault();
   const styleForm = document.getElementById("styleSelect");
+  styleForm.addEventListener("change", generateDocument, { once: true });
   console.log(styleForm.value);
   if (styleForm.value == "classic") {
-    generateClassicStyle(e)
+    generateClassicStyle(e);
   } else if (styleForm.value == "standard") {
-    generateStandardStyle(e)
+    generateStandardStyle(e);
   }
 }
+
 form.addEventListener("submit", generateDocument);
+
+const styleForm = document.getElementById("styleSelect");
 
 
 
