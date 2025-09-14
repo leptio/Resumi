@@ -139,7 +139,107 @@ function generateStandardStyle(e) {
   preview.classList.remove("opacity-0", "pointer-events-none");
 }
 }
-form.addEventListener("submit", generateStandardStyle);
+
+function generateClassicStyle(e) {
+{
+  e.preventDefault();
+
+  // Personal info
+  document.getElementById("previewName").textContent =
+    document.getElementById("inputName").value;
+  document.getElementById("previewTitle").textContent =
+    document.getElementById("inputTitle").value;
+  document.getElementById("previewSummary").textContent =
+    document.getElementById("inputSummary").value;
+  document.getElementById("previewEmail").textContent =
+    document.getElementById("inputEmail").value;
+  document.getElementById("previewAddressOne").textContent =
+    document.getElementById("inputAddressOne").value;
+  document.getElementById("previewAddressTwo").textContent =
+    document.getElementById("inputAddressTwo").value;
+  // Clear old preview jobs and populate dynamic jobs
+  const expSection = document.getElementById("experiencePreview");
+  expSection.innerHTML = `
+    <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">
+      Experience
+    </h2>
+  `;
+  document.querySelectorAll(".job-block").forEach(block => {
+    const titleInput = block.querySelector('input[placeholder="Job Title"]');
+    const companyInput = block.querySelector('input[placeholder="Company"]');
+    const yearsInput = block.querySelector('input[placeholder="Years"]');
+    const descInput = block.querySelector('textarea');
+
+    const title = titleInput ? titleInput.value.trim() : "";
+    const company = companyInput ? companyInput.value.trim()+"," : "";
+    const years = yearsInput ? yearsInput.value.trim() : "";
+    const desc = descInput ? descInput.value.trim() : "";
+
+    if (title || company || years || desc) {
+      const jobEl = document.createElement("div");
+      jobEl.innerHTML = `
+        <h4 class="font-semibold text-lg">${title}</h4>
+        <p class="text-sm mb-2">${company} ${years}</p>
+        <p class="text-sm mb-2">${desc}</p>
+      `;
+      expSection.appendChild(jobEl);
+    }
+  });
+
+  // Clear old preview universities and populate dynamic universities
+  const schoolSection = document.getElementById("schoolPreview");
+  schoolSection.innerHTML = `
+    <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">
+      Education
+    </h2>
+  `;
+  document.querySelectorAll(".school-block").forEach(block => {
+    const degreeInput = block.querySelector('input[placeholder="Degree (e.g. B.Sc. in CS)"]');
+    const schoolInput = block.querySelector('input[placeholder="School"]');
+    const schoolYearsInput = block.querySelector('input[placeholder="Years"]');
+
+    const degree = degreeInput ? degreeInput.value.trim() : "";
+    const school = schoolInput ? schoolInput.value.trim()+"," : "";
+    const schoolYears = schoolYearsInput ? schoolYearsInput.value.trim() : "";
+
+    if (degree || school || schoolYears) {
+      const schoolEl = document.createElement("div");
+      schoolEl.innerHTML = `
+        <h4 class="font-semibold text-lg">${degree}</h4>
+        <p class="text-sm mb-2">${school} ${schoolYears}</p>
+      `;
+      schoolSection.appendChild(schoolEl);
+    }
+  });
+
+  // Skills
+  const skillsContainer = document.getElementById("skillsPreview");
+  skillsContainer.innerHTML = "";
+  const skills = document.getElementById("inputSkills").value.split(",");
+  skills.forEach((skill) => {
+    if (skill.trim()) {
+      const span = document.createElement("span");
+      span.textContent = skill.trim();
+      skillsContainer.appendChild(span);
+    }
+  });
+
+  // Show preview
+  preview.classList.remove("opacity-0", "pointer-events-none");
+}
+}
+
+function generateDocument(e) {
+  e.preventDefault();
+  const styleForm = document.getElementById("styleSelect");
+  console.log(styleForm.value);
+  if (styleForm.value == "classic") {
+    generateClassicStyle(e)
+  } else if (styleForm.value == "standard") {
+    generateStandardStyle(e)
+  }
+}
+form.addEventListener("submit", generateDocument);
 
 
 
@@ -247,6 +347,9 @@ fontForm.addEventListener("change", () => {
     el.style.fontFamily = selectedFont;
   });
 });
+
+
+
 
 const { jsPDF } = window.jspdf;
 import { robotoTTF } from "./fonts/roboto.js"
