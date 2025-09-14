@@ -141,6 +141,16 @@ function generateStandardStyle(e) {
 }
 }
 
+const fontForm = document.getElementById("fontSelect");
+function applyFonts() {
+  const selectedFont = fontSelect.value;
+  preview.style.fontFamily = selectedFont;
+  preview.querySelectorAll("*").forEach(el => {
+    el.style.fontFamily = selectedFont;
+  });
+}
+fontForm.addEventListener("change", applyFonts);
+
 function generateClassicStyle(e) {
 {
   e.preventDefault();
@@ -233,7 +243,10 @@ function generateClassicStyle(e) {
 function generateDocument(e) {
   e.preventDefault();
   const styleForm = document.getElementById("styleSelect");
-  styleForm.addEventListener("change", generateDocument, { once: true });
+  styleForm.addEventListener("change", (e) => {
+  generateDocument(e);
+  applyFonts();
+  }, { once: true });
   console.log(styleForm.value);
   if (styleForm.value == "classic") {
     generateClassicStyle(e);
@@ -343,15 +356,7 @@ function prepareResumeForExport() {
   resume.style.pointerEvents = "auto";
 }
 
-const fontForm = document.getElementById("fontSelect");
 
-fontForm.addEventListener("change", () => {
-  const selectedFont = fontSelect.value;
-  preview.style.fontFamily = selectedFont;
-  preview.querySelectorAll("*").forEach(el => {
-    el.style.fontFamily = selectedFont;
-  });
-});
 
 
 
