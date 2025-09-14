@@ -33,8 +33,8 @@ function updateToggleIcon() {
 // Form submission: generate resume preview
 const form = document.getElementById('resume-form');
 const preview = document.getElementById('resume-preview');
-
-form.addEventListener("submit", (e) => {
+function generateStandardStyle(e) {
+{
   e.preventDefault();
 
   // Personal info
@@ -137,7 +137,9 @@ form.addEventListener("submit", (e) => {
 
   // Show preview
   preview.classList.remove("opacity-0", "pointer-events-none");
-});
+}
+}
+form.addEventListener("submit", generateStandardStyle);
 
 
 
