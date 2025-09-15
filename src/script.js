@@ -228,7 +228,7 @@ function generateClassicStyle(e) {
   skillsContainer.innerHTML = "";
   const skills = document.getElementById("inputSkills").value.split(",");
   const skillsArray = [];
-  skills.forEach((skill, num, array) => {
+  skills.forEach((skill) => {
     if (skill.trim()){
       skillsArray.push(skill);
     }
