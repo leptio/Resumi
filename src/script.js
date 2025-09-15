@@ -227,10 +227,20 @@ function generateClassicStyle(e) {
   const skillsContainer = document.getElementById("skillsPreview");
   skillsContainer.innerHTML = "";
   const skills = document.getElementById("inputSkills").value.split(",");
-  skills.forEach((skill) => {
-    if (skill.trim()) {
+  const skillsArray = [];
+  skills.forEach((skill, num, array) => {
+    if (skill.trim()){
+      skillsArray.push(skill);
+    }
+  });
+  skillsArray.forEach((skill, num, array) => {
+    if (num === array.length - 1){ 
       const span = document.createElement("span");
       span.textContent = skill.trim();
+      skillsContainer.appendChild(span);
+    } else {
+      const span = document.createElement("span");
+      span.textContent = skill.trim() + ",";
       skillsContainer.appendChild(span);
     }
   });
