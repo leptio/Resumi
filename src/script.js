@@ -364,6 +364,7 @@ function prepareResumeForExport() {
 const { jsPDF } = window.jspdf;
 import { robotoTTF } from "./fonts/roboto.js"
 import { latoTTF } from "./fonts/lato.js"
+import { cambriaTTF } from "./fonts/cambria.js"
 
 pdfBtn.addEventListener("click", () => {
   const originalWidth = resume.style.width;
@@ -394,6 +395,11 @@ pdfBtn.addEventListener("click", () => {
   } else if (fontForm.value == "Times New Roman") {
     console.log("tnr detected")
     pdf.setFont("times");
+  } else if (fontForm.value == "Cambria") {
+    console.log("Cambria detected")
+    pdf.addFileToVFS("Cambria.ttf", cambriaTTF);
+    pdf.addFont("Cambria.ttf", "Cambria", "normal");
+    pdf.setFont("Cambria");
   }
   console.log('after addFont getFontList', pdf.getFontList());
   console.log("form continued")
