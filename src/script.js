@@ -263,6 +263,7 @@ function generateDocument(e) {
   } else if (styleForm.value == "standard") {
     generateStandardStyle(e);
   }
+  applyFonts();
 }
 
 form.addEventListener("submit", generateDocument);
