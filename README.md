@@ -1,0 +1,6 @@
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Issues](https://img.shields.io/github/issues/leptio/Resumi)
+![Contributors](https://img.shields.io/github/contributors/leptio/Resumi)
+![Last Commit](https://img.shields.io/github/last-commit/leptio/Resumi)
+![Docs](https://img.shields.io/badge/docs-available-brightgreen)
