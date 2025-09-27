@@ -1,3 +1,4 @@
+![Deployment](https://github.com/USERNAME/REPO/actions/workflows/pages/pages-build-deployment/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Issues](https://img.shields.io/github/issues/leptio/Resumi)
 ![Last Commit](https://img.shields.io/github/last-commit/leptio/Resumi)
