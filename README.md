@@ -10,7 +10,7 @@ Resumi is a fully client-side, open-source resume builder that runs entirely in 
 - [Motivation](#motivation)
 - [Features](#features)
 - [Usage](#usage)
-- [Architecture & Design](#architecture)
+- [Architecture & Design](#architecture--design)
 ---
 
 ## Motivation
