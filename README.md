@@ -19,7 +19,7 @@ Existing resume builders, although sometimes free, often require storing user da
 ---
 
 ## Features
-- Pure client-side operation (no server, no API calls)
+- Pure client-side operation
 - Templates / styling options (via CSS / Tailwind)
 - Export generated resume via PDF
 - Customizable layout, color, typography
