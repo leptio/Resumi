@@ -30,6 +30,18 @@ function updateToggleIcon() {
   }
 }
 
+function toggleUnderlineSections(enable) {
+  const headers = [
+    document.querySelector('#previewSummary').previousElementSibling,
+    document.querySelector('#skillsPreview').previousElementSibling
+  ];
+
+  headers.forEach(header => {
+    if (!header) return;
+    header.style.borderBottom = enable ? '' : 'none';
+  });
+}
+
 // Form submission: generate resume preview
 const form = document.getElementById('resume-form');
 const preview = document.getElementById('resume-preview');
@@ -50,6 +62,8 @@ function generateStandardStyle(e) {
     document.getElementById("inputAddressOne").value;
   document.getElementById("previewAddressTwo").textContent =
     document.getElementById("inputAddressTwo").value;
+  toggleUnderlineSections(true);
+
   // Clear old preview jobs and populate dynamic jobs
   const expSection = document.getElementById("experiencePreview");
   expSection.innerHTML = `
@@ -121,7 +135,15 @@ function generateStandardStyle(e) {
     }
   });
 
+  // Summary
+  const summaryOutlier = document.getElementById("summaryOutlier");
+  summaryOutlier.className = "text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3";
+  summaryOutlier.textContent = "Summary";
+
   // Skills
+  const skillsOutlier = document.getElementById("skillsOutlier");
+  skillsOutlier.className = "text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3";
+  skillsOutlier.textContent = "Skills";
   const skillsContainer = document.getElementById("skillsPreview");
   skillsContainer.innerHTML = "";
   const skills = document.getElementById("inputSkills").value.split(",");
@@ -167,6 +189,9 @@ function generateClassicStyle(e) {
     document.getElementById("inputAddressOne").value;
   document.getElementById("previewAddressTwo").textContent =
     document.getElementById("inputAddressTwo").value;
+
+  toggleUnderlineSections(true);
+
   // Clear old preview jobs and populate dynamic jobs
   const expSection = document.getElementById("experiencePreview");
   expSection.innerHTML = `
@@ -222,7 +247,15 @@ function generateClassicStyle(e) {
     }
   });
 
+  // Summary
+  const summaryOutlier = document.getElementById("summaryOutlier");
+  summaryOutlier.className = "text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3";
+  summaryOutlier.textContent = "Summary";
+
   // Skills
+  const skillsOutlier = document.getElementById("skillsOutlier");
+  skillsOutlier.className = "text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3";
+  skillsOutlier.textContent = "Skills";
   const skillsContainer = document.getElementById("skillsPreview");
   skillsContainer.innerHTML = "";
   const skills = document.getElementById("inputSkills").value.split(",");
@@ -249,6 +282,98 @@ function generateClassicStyle(e) {
 }
 }
 
+function generateTraditionalStyle(e) {
+  e.preventDefault();
+
+  // Personal info
+  document.getElementById("previewName").textContent =
+    document.getElementById("inputName").value;
+  document.getElementById("previewTitle").textContent =
+    document.getElementById("inputTitle").value;
+  document.getElementById("previewSummary").textContent =
+    document.getElementById("inputSummary").value;
+  document.getElementById("previewEmail").textContent =
+    document.getElementById("inputEmail").value;
+  document.getElementById("previewAddressOne").textContent =
+    document.getElementById("inputAddressOne").value;
+  document.getElementById("previewAddressTwo").textContent =
+    document.getElementById("inputAddressTwo").value;
+  toggleUnderlineSections(false);
+  // Experience
+  const expSection = document.getElementById("experiencePreview");
+  expSection.innerHTML = `<h2 style="font-weight:bold; text-decoration:underline; margin-bottom:8px;">Experience</h2>`;
+  document.querySelectorAll(".job-block").forEach(block => {
+    const title = block.querySelector('input[placeholder="Job Title"]')?.value.trim() || "";
+    const company = block.querySelector('input[placeholder="Company"]')?.value.trim() || "";
+    const years = block.querySelector('input[placeholder="Years"]')?.value.trim() || "";
+    const desc = block.querySelector('textarea')?.value.trim() || "";
+
+    if (title || company || years || desc) {
+      const jobEl = document.createElement("div");
+      jobEl.style.marginBottom = "10px";
+      jobEl.innerHTML = `
+        <div style="font-weight:bold; display:flex; justify-content:space-between;">
+          <span>${title}</span><span>${years}</span>
+        </div>
+        <div style="font-style:italic;">${company}</div>
+        <div>${desc}</div>
+      `;
+      expSection.appendChild(jobEl);
+    }
+  });
+
+  // Education
+  const schoolSection = document.getElementById("schoolPreview");
+  schoolSection.innerHTML = `<h2 style="font-weight:bold; text-decoration:underline; margin-bottom:8px;">Education</h2>`;
+  document.querySelectorAll(".school-block").forEach(block => {
+    const degree = block.querySelector('input[placeholder="Degree (e.g. B.Sc. in CS)"]')?.value.trim() || "";
+    const school = block.querySelector('input[placeholder="School"]')?.value.trim() || "";
+    const years = block.querySelector('input[placeholder="Years"]')?.value.trim() || "";
+
+    if (degree || school || years) {
+      const schoolEl = document.createElement("div");
+      schoolEl.style.marginBottom = "10px";
+      schoolEl.innerHTML = `
+        <div style="font-weight:bold; display:flex; justify-content:space-between;">
+          <span>${degree}</span><span>${years}</span>
+        </div>
+        <div style="font-style:italic;">${school}</div>
+      `;
+      schoolSection.appendChild(schoolEl);
+    }
+  });
+
+  // Summary
+  const summaryOutlier = document.getElementById("summaryOutlier");
+  summaryOutlier.innerHTML = `<h2 style="font-weight:bold; text-decoration:underline; margin-bottom:-10px; font-size:1rem;">Summary</h2>`;
+
+  // Skills
+  const skillsContainer = document.getElementById("skillsPreview");
+  skillsContainer.innerHTML = "";
+  const skillsOutlier = document.getElementById("skillsOutlier");
+  skillsOutlier.innerHTML = `<h2 style="font-weight:bold; text-decoration:underline; margin-bottom:-10px; font-size:1rem;">Skills</h2>`;
+  const skills = document.getElementById("inputSkills").value.split(",");
+  const skillsArray = [];
+  skills.forEach((skill) => {
+    if (skill.trim()){
+      skillsArray.push(skill);
+    }
+  });
+  skillsArray.forEach((skill, num, array) => {
+    if (num === array.length - 1){ 
+      const span = document.createElement("span");
+      span.textContent = skill.trim();
+      skillsContainer.appendChild(span);
+    } else {
+      const span = document.createElement("span");
+      span.textContent = skill.trim() + ",";
+      skillsContainer.appendChild(span);
+    }
+  });
+  // Show preview
+  preview.classList.remove("opacity-0", "pointer-events-none");
+}
+
 function generateDocument(e) {
   e.preventDefault();
   const styleForm = document.getElementById("styleSelect");
@@ -261,6 +386,8 @@ function generateDocument(e) {
     generateClassicStyle(e);
   } else if (styleForm.value == "standard") {
     generateStandardStyle(e);
+  } else if (styleForm.value == "traditional") {
+    generateTraditionalStyle(e);
   }
   applyFonts();
 }

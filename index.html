@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resumi - Futuristic Resume Builder</title>
+  <title>Resumi</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/src/icon/favicon.ico">
@@ -93,6 +93,7 @@
           <select id="styleSelect" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option selected value="standard">Standard</option>
             <option value="classic">Classic</option>
+            <option value="traditional">Traditional</option>
           </select>
         </div>
 
@@ -121,7 +122,7 @@
       </div>
       <!-- Summary -->
       <div>
-        <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Summary</h2>
+        <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3" id="summaryOutlier">Summary</h2>
         <p id="previewSummary" class="text-gray-700 dark:text-gray-200"></p>
       </div>
 
@@ -144,7 +145,7 @@
      </div>
       <!-- Skills Tags -->
       <div>
-        <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3">Skills</h2>
+        <h2 class="text-2xl font-semibold border-b-2 border-gray-300 dark:border-gray-600 pb-2 mb-3" id="skillsOutlier">Skills</h2>
         <div id="skillsPreview" class="flex flex-wrap gap-2"></div>
       </div>
       <!-- Export Buttons -->
