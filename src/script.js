@@ -4,7 +4,6 @@ console.log("initiated");
 const themeToggle = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
 const storedTheme = localStorage.getItem('theme');
-const docLive = false;
 if (storedTheme) {
   htmlEl.classList.add(storedTheme);
 }
