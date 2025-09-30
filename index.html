@@ -14,6 +14,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/src/icon/apple-touch-icon.png">
 
   <!-- Tailwind Play CDN -->
+  <style type="text/tailwindcss">
+    /* Class based dark mode */
+    @variant dark (&:where(.dark, .dark *));
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <!-- style.css import -->
   <link rel="stylesheet" href="style.css">
