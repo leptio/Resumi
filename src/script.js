@@ -500,8 +500,14 @@ function prepareResumeForExport() {
 
 const { jsPDF } = window.jspdf;
 import { robotoTTF } from "./fonts/roboto.js"
+import { robotoTTFbold } from "./fonts/roboto.js"
+import { robotoTTFitalic } from "./fonts/roboto.js"
 import { latoTTF } from "./fonts/lato.js"
+import { latoTTFbold } from "./fonts/lato.js"
+import { latoTTFitalic } from "./fonts/lato.js"
 import { cambriaTTF } from "./fonts/cambria.js"
+import { cambriaTTFbold } from "./fonts/cambria.js"
+import { cambriaTTFitalic } from "./fonts/cambria.js"
 
 pdfBtn.addEventListener("click", () => {
   const originalWidth = resume.style.width;
@@ -523,19 +529,31 @@ pdfBtn.addEventListener("click", () => {
     console.log("roboto detected")
     pdf.addFileToVFS("Roboto.ttf", robotoTTF);
     pdf.addFont("Roboto.ttf", "Roboto", "normal");
+    pdf.addFileToVFS("RobotoBold.ttf", robotoTTFbold);
+    pdf.addFont("RobotoBold.ttf", "Roboto", "bold");
+    pdf.addFileToVFS("RobotoItalic.ttf", robotoTTFitalic);
+    pdf.addFont("RobotoItalic.ttf", "Roboto", "italic");
     pdf.setFont("Roboto");
   } else if (fontForm.value == "Lato") {
-    console.log("lato detected")
+    console.log("Lato detected")
     pdf.addFileToVFS("Lato.ttf", latoTTF);
     pdf.addFont("Lato.ttf", "Lato", "normal");
+    pdf.addFileToVFS("LatoBold.ttf", latoTTFbold);
+    pdf.addFont("LatoBold.ttf", "Lato", "bold");
+    pdf.addFileToVFS("LatoItalic.ttf", latoTTFitalic);
+    pdf.addFont("LatoItalic.ttf", "Lato", "italic");
     pdf.setFont("Lato");
   } else if (fontForm.value == "Times New Roman") {
-    console.log("tnr detected")
+    console.log("TNR detected")
     pdf.setFont("times");
   } else if (fontForm.value == "Cambria") {
     console.log("Cambria detected")
     pdf.addFileToVFS("Cambria.ttf", cambriaTTF);
     pdf.addFont("Cambria.ttf", "Cambria", "normal");
+    pdf.addFileToVFS("CambriaBold.ttf", cambriaTTFbold);
+    pdf.addFont("CambriaBold.ttf", "Cambria", "bold");
+    pdf.addFileToVFS("CambriaItalic.ttf", cambriaTTFitalic);
+    pdf.addFont("CambriaItalic.ttf", "Cambria", "italic");
     pdf.setFont("Cambria");
   }
   console.log('after addFont getFontList', pdf.getFontList());
