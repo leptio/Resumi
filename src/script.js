@@ -1,6 +1,17 @@
 // Theme Toggle (Dark/Light) with persistence
 console.log("initiated");
 
+// Welcome Modal
+const welcomeModal = document.getElementById('welcome-modal');
+function closeModal() {
+  welcomeModal.style.opacity = '0';
+  welcomeModal.style.transition = 'opacity 0.2s ease';
+  setTimeout(() => welcomeModal.remove(), 200);
+}
+document.getElementById('close-modal').addEventListener('click', closeModal);
+document.getElementById('get-started-btn').addEventListener('click', closeModal);
+document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
 const themeToggle = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
 const storedTheme = localStorage.getItem('theme');

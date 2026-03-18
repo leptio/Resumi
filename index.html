@@ -28,6 +28,64 @@
 </head>
 
 <body class="min-h-screen bg-gradient-to-br from-gray-200 to-white dark:from-gray-900 dark:to-indigo-800 text-gray-800 dark:text-gray-100 transition-colors">
+
+  <!-- Welcome Modal -->
+  <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <!-- Modal Card -->
+    <div class="relative z-10 bg-white dark:bg-gray-900 border border-white/30 dark:border-gray-700 rounded-2xl shadow-2xl max-w-lg w-full p-8 space-y-5 animate-[fadeIn_0.25s_ease-out]">
+      <!-- Close button -->
+      <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl leading-none transition" aria-label="Close">&times;</button>
+
+      <!-- Title -->
+      <div class="text-center space-y-1">
+        <h2 class="text-3xl font-bold bg-gradient-to-tl from-[#1e293b] via-[#6366f1] to-[#71717a] bg-clip-text text-transparent">Welcome to Resumi</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Your free, open-source resume builder</p>
+      </div>
+
+      <!-- How it works -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-indigo-500 dark:text-indigo-400">How it works</h3>
+        <ol class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+          <li class="flex gap-3 items-start">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 flex items-center justify-center font-bold text-xs">1</span>
+            <span><strong>Fill in your details</strong> — name, title, summary, contact info, work experience, education, and skills.</span>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 flex items-center justify-center font-bold text-xs">2</span>
+            <span><strong>Choose a font &amp; style</strong> — pick from multiple typefaces (Roboto, Cambria, Lato, Times New Roman) and resume layouts (Standard, Classic, Traditional).</span>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 flex items-center justify-center font-bold text-xs">3</span>
+            <span><strong>Generate your resume</strong> — click <em>Generate Resume</em> to see a live preview on the right.</span>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 flex items-center justify-center font-bold text-xs">4</span>
+            <span><strong>Download as PDF</strong> — export your finished resume with one click. No account required.</span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Divider -->
+      <hr class="border-gray-200 dark:border-gray-700" />
+
+      <!-- Open source -->
+      <div class="space-y-2">
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-indigo-500 dark:text-indigo-400">Open Source</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Resumi is <strong>free and open source</strong> under the MIT License. Your data never leaves your browser — everything runs locally. Contributions, bug reports, and feature requests are welcome on
+          <a href="https://github.com/leptio/Resumi" target="_blank" class="text-indigo-500 hover:underline font-medium">GitHub</a>.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <button id="get-started-btn" class="w-full py-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-semibold hover:opacity-90 transform hover:scale-105 transition duration-300">
+        Get Started
+      </button>
+    </div>
+  </div>
+
   <!-- Header with title and theme toggle -->
   <header class="flex items-center justify-between p-4 max-w-5xl mx-auto">
     <h1 class="text-3xl font-bold bg-gradient-to-tl from-[#1e293b] via-[#6366f1] to-[#71717a] bg-clip-text text-transparent">Resumi</h1>
